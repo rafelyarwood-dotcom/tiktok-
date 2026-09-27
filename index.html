@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#090a0f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="LIVE Giveaway">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<title>LIVE Giveaway</title>
+<style>
+:root{--bg:#090a0f;--panel:#12141d;--line:#272b38;--text:#f8f9fc;--muted:#8f98aa;--pink:#fe2c55;--cyan:#25f4ee;--green:#38d98a;--gold:#ffcf56;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:#000;color:var(--text);overflow:hidden}body{background:radial-gradient(circle at 15% 0%,rgba(37,244,238,.11),transparent 25%),radial-gradient(circle at 85% 5%,rgba(254,44,85,.13),transparent 28%),var(--bg)}
+button,input,select{font:inherit}.app{width:100%;height:100dvh;overflow:auto;padding:calc(env(safe-area-inset-top) + 10px) 14px calc(env(safe-area-inset-bottom) + 18px)}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.brand{display:flex;align-items:center;gap:10px}.logo{width:40px;height:40px;border-radius:12px;background:#fff;color:#111;display:grid;place-items:center;font-weight:900;font-size:18px;box-shadow:-3px 3px 0 var(--cyan),3px -3px 0 var(--pink)}.brand h1{margin:0;font-size:20px}.brand p{margin:3px 0 0;font-size:11px;color:var(--muted)}.iconbtn{width:38px;height:38px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:#fff}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.025),transparent),var(--panel);border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:10px}.label{display:block;font-size:12px;color:#c7cedb;font-weight:750;margin-bottom:7px}.input{width:100%;border:1px solid #33394a;background:#0c0e15;color:#fff;padding:11px 12px;border-radius:12px;outline:none}.row{display:flex;gap:8px}.grow{flex:1}.searchbox{display:flex;align-items:center;border:1px solid #343b4d;background:#0c0e15;border-radius:12px;padding:0 10px;flex:1}.searchbox span{color:var(--muted);font-size:18px}.searchbox input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:#fff;padding:11px 7px}
+.btn{border:0;border-radius:12px;padding:11px 14px;font-weight:800}.primary{background:linear-gradient(135deg,var(--pink),#ff4b71);color:#fff}.secondary{background:#252a36;color:#fff}.green{background:linear-gradient(135deg,#1fc46c,#4ade91);color:#08120c}.small{padding:10px 12px;font-size:13px}.status{min-height:18px;color:var(--muted);font-size:11px;margin-top:6px}
+.participants{display:flex;flex-wrap:wrap;gap:7px;max-height:118px;overflow:auto;margin-top:10px}.chip{display:flex;align-items:center;gap:6px;background:#1d2130;border:1px solid #2f3545;border-radius:999px;padding:7px 9px;font-size:12px}.avatar{width:24px;height:24px;border-radius:50%;object-fit:cover;background:#2b3140}.chip button{border:0;background:transparent;color:#8f98aa;padding:0;font-size:16px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.stat{background:#171a25;border:1px solid var(--line);border-radius:14px;padding:11px;text-align:center}.stat .n{font-size:22px;font-weight:850}.stat .k{font-size:10px;color:var(--muted)}
+.draw-card{text-align:center;overflow:hidden}.prize{font-size:11px;color:var(--gold);font-weight:800;text-transform:uppercase;letter-spacing:.1em}.roulette{margin:14px auto 10px;min-height:92px;display:flex;align-items:center;justify-content:center}.roulette-name{font-size:32px;font-weight:900;letter-spacing:-1px;text-shadow:-2px 0 var(--cyan),2px 0 var(--pink);word-break:break-word}.draw-btn{width:100%;padding:15px;font-size:18px}.hint{color:var(--muted);font-size:10px;line-height:1.45;margin-top:8px}
+.history-item{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#171b26;border:1px solid var(--line);border-radius:12px;padding:10px;margin-top:7px}.history-item strong{font-size:13px}.history-item span{font-size:10px;color:var(--muted)}.empty{color:var(--muted);text-align:center;font-size:12px;padding:10px 0}
+.overlay{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.72);display:grid;place-items:center;padding:18px}.hidden{display:none!important}.modal{width:min(100%,390px);background:#141822;border:1px solid #303747;border-radius:22px;padding:18px;box-shadow:0 30px 90px rgba(0,0,0,.42)}.winner-card{text-align:center;background:radial-gradient(circle at 50% 20%,rgba(255,207,86,.24),transparent 35%),#141822}.trophy{font-size:58px}.winner-title{font-size:12px;color:var(--gold);font-weight:900;letter-spacing:.12em}.winner-name{font-size:34px;font-weight:900;margin:8px 0 3px}.winner-prize{font-size:15px;color:#d7dce6}.actions{display:flex;gap:8px;margin-top:14px}.actions button{flex:1}.modal h3{margin:0 0 8px;font-size:20px}.modal p{margin:0 0 12px;color:var(--muted);font-size:12px;line-height:1.45}.confetti{position:fixed;inset:0;pointer-events:none;z-index:99;overflow:hidden}.piece{position:absolute;top:-20px;width:8px;height:14px;animation:fall 1.7s linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+@media(min-width:600px){.app{max-width:480px;margin:0 auto;border-left:1px solid #1b1f2a;border-right:1px solid #1b1f2a}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="topbar"><div class="brand"><div id="secretLogo" class="logo">G</div><div><h1>LIVE Giveaway</h1><p>Mobile raffle tool</p></div></div><button id="clearBtn" class="iconbtn">↻</button></header>
+
+<section class="card">
+<label class="label">Prize</label><input id="prizeInput" class="input" value="Mystery Gift">
+<div class="row" style="margin-top:10px"><div class="grow"><label class="label">Winners</label><select id="winnerCount" class="input"><option value="1">1 winner</option><option value="2">2 winners</option><option value="3">3 winners</option><option value="5">5 winners</option></select></div><div class="grow"><label class="label">Draw speed</label><select id="speedSelect" class="input"><option value="2200">Normal</option><option value="3500">Suspense</option><option value="1200">Fast</option></select></div></div>
+</section>
+
+<section class="card">
+<label class="label">Add TikTok participant</label>
+<div class="row"><div class="searchbox"><span>@</span><input id="usernameInput" placeholder="username"></div><button id="searchBtn" class="btn secondary small">Search</button></div>
+<div id="searchStatus" class="status"></div><div id="searchResult"></div>
+<div class="row" style="margin-top:8px"><input id="quickAddInput" class="input grow" placeholder="Or type a username manually"><button id="quickAddBtn" class="btn secondary small">Add</button></div>
+<div id="participants" class="participants"></div>
+<div class="stats"><div class="stat"><div id="participantCount" class="n">0</div><div class="k">Participants</div></div><div class="stat"><div id="drawCount" class="n">0</div><div class="k">Draws</div></div><div class="stat"><div id="winnerTotal" class="n">0</div><div class="k">Winners</div></div></div>
+</section>
+
+<section class="card draw-card"><div class="prize">LIVE DRAW</div><div class="roulette"><div id="rouletteName" class="roulette-name">Ready</div></div><button id="drawBtn" class="btn primary draw-btn">START DRAW</button><div class="hint">Randomly selects from the participant list above.</div></section>
+
+<section class="card"><label class="label">Winner history</label><div id="history"></div></section>
+</div>
+
+<div id="winnerModal" class="overlay hidden"><div class="modal winner-card"><div class="trophy">🏆</div><div class="winner-title">WINNER</div><div id="winnerName" class="winner-name">@username</div><div id="winnerPrize" class="winner-prize">Mystery Gift</div><div class="actions"><button id="winnerOk" class="btn green">Confirm</button></div></div></div>
+
+<div id="settingsModal" class="overlay hidden"><div class="modal"><h3>App Settings</h3><p>Optional: add a ScrapeCreators API key to search public TikTok profiles. Manual participant entry works without an API.</p><label class="label">ScrapeCreators API Key</label><input id="apiKeyInput" class="input" type="password" placeholder="Paste API key"><div class="actions"><button id="settingsCancel" class="btn secondary">Cancel</button><button id="settingsSave" class="btn primary">Save</button></div></div></div>
+<div id="confetti" class="confetti"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const LS_PART='giveaway_participants_v1',LS_HIST='giveaway_history_v1',LS_DRAWS='giveaway_draws_v1',LS_API='giveaway_api_v1';
+let participants=JSON.parse(localStorage.getItem(LS_PART)||'[]'),history=JSON.parse(localStorage.getItem(LS_HIST)||'[]'),drawCount=Number(localStorage.getItem(LS_DRAWS)||'0'),drawing=false,pendingWinners=[];
+const save=()=>{localStorage.setItem(LS_PART,JSON.stringify(participants));localStorage.setItem(LS_HIST,JSON.stringify(history));localStorage.setItem(LS_DRAWS,String(drawCount));};
+
+function renderParticipants(){
+  const box=$('participants');box.innerHTML='';
+  participants.forEach((p,i)=>{const chip=document.createElement('div');chip.className='chip';chip.innerHTML=(p.avatar?`<img class="avatar" src="${p.avatar}">`:`<div class="avatar"></div>`)+`<span>@${p.username}</span><button data-i="${i}">×</button>`;box.appendChild(chip);});
+  box.querySelectorAll('button').forEach(b=>b.onclick=()=>{participants.splice(Number(b.dataset.i),1);save();renderAll();});
+  $('participantCount').textContent=participants.length;
+}
+function renderHistory(){
+  const box=$('history');box.innerHTML='';
+  if(!history.length){box.innerHTML='<div class="empty">No winners yet</div>';}
+  else history.slice(0,12).forEach(h=>{const row=document.createElement('div');row.className='history-item';row.innerHTML=`<div><strong>@${h.username}</strong><br><span>${h.prize}</span></div><span>${h.time}</span>`;box.appendChild(row);});
+  $('winnerTotal').textContent=history.length;
+}
+function renderAll(){renderParticipants();renderHistory();$('drawCount').textContent=drawCount;}
+function addParticipant(p){
+  const u=String(p.username||'').trim().replace(/^@+/,'');if(!u)return;
+  if(participants.some(x=>x.username.toLowerCase()===u.toLowerCase())){$('searchStatus').textContent='Already added';return;}
+  participants.push({username:u,nickname:p.nickname||u,avatar:p.avatar||''});save();renderAll();$('searchStatus').textContent='Added @'+u;
+}
+$('quickAddBtn').onclick=()=>{addParticipant({username:$('quickAddInput').value.trim()});$('quickAddInput').value='';};
+$('quickAddInput').addEventListener('keydown',e=>{if(e.key==='Enter')$('quickAddBtn').click();});
+
+async function searchUser(){
+  const username=$('usernameInput').value.trim().replace(/^@+/,'');if(!username)return;
+  const apiKey=localStorage.getItem(LS_API)||'';if(!apiKey){$('searchStatus').textContent='Tap the G logo 5 times to configure API, or add manually.';return;}
+  $('searchStatus').textContent='Searching...';$('searchResult').innerHTML='';
+  try{
+    const r=await fetch('/api/search-user',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({username,apiKey})});
+    const d=await r.json();if(!r.ok)throw new Error(d.error||'Search failed');
+    const box=$('searchResult');const card=document.createElement('div');card.className='history-item';card.innerHTML=`<div style="display:flex;align-items:center;gap:9px">${d.avatar?`<img class="avatar" style="width:36px;height:36px" src="${d.avatar}">`:`<div class="avatar" style="width:36px;height:36px"></div>`}<div><strong>${d.nickname||d.username}</strong><br><span>@${d.username}</span></div></div><button class="btn green small" id="addFoundBtn">Add</button>`;box.appendChild(card);$('addFoundBtn').onclick=()=>addParticipant(d);$('searchStatus').textContent='Profile found';
+  }catch(e){$('searchStatus').textContent=e.message||'Search failed';}
+}
+$('searchBtn').onclick=searchUser;$('usernameInput').addEventListener('keydown',e=>{if(e.key==='Enter')searchUser();});
+
+function randomIndex(max){if(window.crypto&&window.crypto.getRandomValues){const a=new Uint32Array(1);window.crypto.getRandomValues(a);return a[0]%max;}return Math.floor(Math.random()*max);}
+function burstConfetti(){const box=$('confetti');box.innerHTML='';const colors=['#25f4ee','#fe2c55','#ffcf56','#38d98a','#ffffff'];for(let i=0;i<70;i++){const p=document.createElement('div');p.className='piece';p.style.left=(Math.random()*100)+'vw';p.style.background=colors[i%colors.length];p.style.animationDelay=(Math.random()*.45)+'s';box.appendChild(p);}setTimeout(()=>box.innerHTML='',2300);}
+function commitWinner(p){history.unshift({username:p.username,prize:$('prizeInput').value.trim()||'Prize',time:new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})});save();renderAll();}
+function showWinner(p){$('winnerName').textContent='@'+p.username;$('winnerPrize').textContent=$('prizeInput').value.trim()||'Prize';$('winnerModal').classList.remove('hidden');burstConfetti();}
+function startDraw(){
+  if(drawing)return;if(!participants.length){$('rouletteName').textContent='Add participants';return;}
+  drawing=true;$('drawBtn').disabled=true;const count=Math.min(Number($('winnerCount').value)||1,participants.length),duration=Number($('speedSelect').value)||2200,pool=[...participants];pendingWinners=[];let elapsed=0;
+  const timer=setInterval(()=>{$('rouletteName').textContent='@'+pool[randomIndex(pool.length)].username;elapsed+=70;if(elapsed>=duration){clearInterval(timer);for(let i=0;i<count;i++){const idx=randomIndex(pool.length);pendingWinners.push(pool.splice(idx,1)[0]);}drawCount++;save();$('drawCount').textContent=drawCount;drawing=false;$('drawBtn').disabled=false;const first=pendingWinners.shift();commitWinner(first);showWinner(first);}},70);
+}
+$('drawBtn').onclick=startDraw;
+$('winnerOk').onclick=()=>{$('winnerModal').classList.add('hidden');if(pendingWinners.length){const n=pendingWinners.shift();commitWinner(n);showWinner(n);}else $('rouletteName').textContent='Ready';};
+$('clearBtn').onclick=()=>{if(confirm('Clear participants and winner history?')){participants=[];history=[];drawCount=0;save();renderAll();$('rouletteName').textContent='Ready';}};
+
+let taps=0,timer=null;$('secretLogo').onclick=()=>{taps++;clearTimeout(timer);timer=setTimeout(()=>taps=0,1800);if(taps>=5){taps=0;$('apiKeyInput').value=localStorage.getItem(LS_API)||'';$('settingsModal').classList.remove('hidden');}};
+$('settingsCancel').onclick=()=>$('settingsModal').classList.add('hidden');
+$('settingsSave').onclick=()=>{localStorage.setItem(LS_API,$('apiKeyInput').value.trim());$('settingsModal').classList.add('hidden');};
+
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('service-worker.js').catch(()=>{}));}
+renderAll();
+</script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+Deploy to Vercel, then open in Safari and Add to Home Screen. Tap the G logo 5 times to configure ScrapeCreators API. Manual participant entry works without API.
